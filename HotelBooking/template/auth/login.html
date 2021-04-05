@@ -1,0 +1,126 @@
+{% extends "base.html" %} {% load widget_tweaks %} {% block content %}
+<div class="row">
+
+</div>
+<div
+  class="card shadow"
+  style="width: 18rem; margin-left: 40%; margin-top: 10%"
+>
+  <div class="card-body">
+    <h5 class="card-title text-center">Login</h5>
+    <div class="row pt-3">
+
+      <form action="" method="POST">
+        {%csrf_token%}
+
+        <div class="input-group date" id="datetimepicker">
+          <span
+            class="input-group-text"
+            style="margin-bottom: 6%; background: none; border: none"
+          >
+            <i class="fas fa-envelope" style="font-size: 15px"></i
+          ></span>
+          <div class="input-group-addon input-group-prepend ml-3">
+            <p>
+              {{ login_form.email|add_class:"email1" }}
+
+              <!-- {{% render_field login_form.email class="email1"
+              placeholder=login_form.email.label %}} -->
+            </p>
+          </div>
+        </div>
+
+        <div class="input-group date" id="datetimepicker">
+          <span
+            class="input-group-text"
+            style="margin-bottom: 6%; background: none; border: none"
+          >
+            <i class="fas fa-lock" style="font-size: 15px"></i
+          ></span>
+          <div class="input-group-addon input-group-prepend ml-3">
+            <p>
+              {{ login_form.password|add_class:"email1"  }}
+
+              <!-- {% render_field login_form.password class="email1"
+              placeholder=login_form.password.label %} -->
+            </p>
+          </div>
+        </div>
+
+        {% if login_form.non_field_errors %}
+
+        <p style="color: red">{{login_form.non_field_errors}}</p>
+
+        {%endif%}
+        <div class="row">
+          <div class="col-12">
+            <a
+              href="{%url 'reset_password'%}"
+              style="
+                text-decoration: none;
+                color: black;
+                font-size: 12px;
+                font: bold;
+              "
+              >Forget Passsword</a
+            >
+          </div>
+        </div>
+
+        <div class="row text-center">
+          <div class="col-12">
+            <button type="submit" class="btn">Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="row pt-4">
+  <p class="text-center">OR</p>
+</div>
+
+<div class="row pt-3 ">
+  <div class="col-3" style="margin-left: 46%; padding-left:1%">
+    <a href="{%url 'register'%}"class="btn btn-outline-primary def rounded-right">      <div class="sign">Sign up</div>
+    </a>
+
+
+  </div>
+
+  </div>
+</div>
+
+<style>
+  .default {
+    border-radius: 20px;
+    padding: 20px;
+    width: 90px;
+    height: 7px;
+
+  }
+.def{
+  display:block;
+  height: 35px;
+  width: 90px;
+  border-radius: 40%;
+  
+}
+
+.sign{
+  font-size: 12px;
+  padding-bottom: 29px;
+  margin-top: 0px;
+  top:0;
+  
+}
+
+  .email1 {
+    outline: 0;
+
+    border-width: 0 0 2px;
+    border-color: rgba(0, 0, 0, 0.26);
+  }
+</style>
+{% endblock %}

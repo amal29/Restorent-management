@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block content %}
+<div class="card"   style="width: 18rem; margin-left: 40%; margin-top: 5%"
+>
+  <div class="card-body">
+    <h4 class="card-title text-center">Register here</h4>
+    <h6 class="card-subtitle mb-2 text-muted"></h6>
+    <p class="card-text">
+      <form action="" method="POST" enctype="multipart/form-data">
+      {%csrf_token%}
+      <span>{{register_form.email.label}}</span>
+    
+      <p>{{register_form.email}}</p>
+    
+     
+      <span>{{register_form.username.label}}</span>
+    
+      <p>{{register_form.username}}</p>
+    
+     
+      <span>{{register_form.profile.label}}</span>
+    
+      <p>{{register_form.profile}}</p>
+    
+      <span>{{register_form.phone.label}}</span>
+    
+      <p>{{register_form.phone}}</p>
+    
+      <span>{{register_form.password1.label}}</span>
+    
+      <p>{{register_form.password1}}</p>
+      <span>{{register_form.password2.label}}</span>
+    
+      <p>{{register_form.password2}}</p>
+      {% for error in register_form.errors %}
+      <p style="color: red">{{error}}</p>
+      {%endfor%}
+    
+      <button type="submit" class="btn btn-primary">Create Account</button>
+    </form></p>
+  
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

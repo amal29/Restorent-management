@@ -1,0 +1,48 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">My Room</h5>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="modal"
+    aria-label="Close"
+  ></button>
+</div>
+<div class="modal-body">
+  {% csrf_token %}
+
+  <div class="container">
+    <div class="row">
+      {% for i in b%}
+
+      <div class="col-12 col-md-6">
+        <div class="card" style="width: 10rem">
+          <img src="{{i.image.url}}" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">{{i.room}}</h5>
+
+            <button
+              type="submit"
+              id="btn-cancel"
+              data-room="{{i.pk}}"
+              class="btn btn-danger btn btn-sm dbtn"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <h5>Booking is not done yet!!</h5>
+      {% endfor %}
+
+      <!-------------card2---------->
+
+      <!-------------card2End---------->
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+    Close
+  </button>
+</div>

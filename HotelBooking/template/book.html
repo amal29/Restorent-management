@@ -1,0 +1,81 @@
+<form data-url="{%url 'book'%}" method="post" id="formid" class="create-form">
+  {% csrf_token %}
+  <div class="modal-header">
+    {%for i in r%}
+
+    <h5 class="modal-title" id="exampleModalLabel">{{i.name}} ROOM</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-6">
+        <img id="img_id" class="img-fluid" src="{{i.image.url}}" />
+      </div>
+
+      <div class="col-6">
+        <label>Check in:</label>
+        <div class="input-group date" id="datetimepicker">
+          <input type="text" class="form-control" id="myText" required />
+          <div class="input-group-addon input-group-prepend">
+            <span class="input-group-text"
+              ><i class="fas fa-calendar" style="font-size: 24px"></i
+            ></span>
+          </div>
+        </div>
+        <label>Check out:</label>
+
+        <div class="input-group date" id="datetimepicker2">
+          <input type="text" class="form-control" id="myText2" required />
+          <div class="input-group-addon input-group-prepend">
+            <span class="input-group-text"
+              ><i class="fas fa-calendar" style="font-size: 24px"></i
+            ></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {%endfor%}
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+      Close
+    </button>
+    <button type="submit" id="sub" class="btn btn-primary">Save</button>
+  </div>
+</form>
+
+<script>
+  $(function () {
+    $.extend(true, $.fn.datetimepicker.defaults, {
+      icons: {
+        time: "far fa-clock",
+        date: "far fa-calendar",
+        up: "fas fa-arrow-up",
+        down: "fas fa-arrow-down",
+        previous: "fas fa-chevron-left",
+        next: "fas fa-chevron-right",
+        today: "far fa-calendar-check-o",
+        clear: "far fa-trash",
+        close: "far fa-times",
+      },
+    });
+  });
+
+  $(function () {
+    $("#datetimepicker").datetimepicker({
+      format: "YYYY-MM-DD HH:mm",
+    });
+  });
+
+  $(function () {
+    $("#datetimepicker2").datetimepicker({
+      format: "YYYY-MM-DD HH:mm",
+    });
+  });
+</script>
